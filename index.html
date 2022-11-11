@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PPD_PMV_calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./view//w3.css">
+    <link rel="stylesheet" href="./view//w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .w3-sidebar {
+            z-index: 3;
+            width: 250px;
+            top: 43px;
+            bottom: 0;
+            height: inherit;
+        }
+    </style>
+    <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script>
+
+</head>
+
+<body style="background-color:#E4FFF0">
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+            <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+                href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+            <a href="PPD_PMV_calculator_vue_w3ctemple.html" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()"
+            class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+            <i class="fa fa-remove"></i>
+        </a>
+        <h4 class="w3-bar-item"><b>Menu</b></h4>
+        <a class="w3-bar-item w3-button w3-hover-black"
+            href="PPD_PMV_calculator_vue_w3ctemple.html">PPD_PMV_calculator</a>
+        <!--<a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+        <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+        <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>-->
+    </nav>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <div class="w3-row w3-padding-64">
+            <div class="w3-twothird w3-container">
+                <h1 class="w3-text-teal">介紹</h1>
+                <p>這是一個用來計算最佳溫度的計算器</p>
+                <p>使用者根據需求 輸入環境參數並按下計算</p>
+                <p>即可獲得免費的室內溫度建議值</p>
+                <p>依據預測不滿意度(PPD)的最小值 為您掌握最高品質的生活</p>
+                <p>人體舒適指標(PMV)提供您一項專業數值化的舒適度形容</p>
+                <p>對溫度的形容 不再只有「好冷」或「好熱」</p>
+            </div>
+            <div class="w3-third w3-container">
+                <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+                <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+            </div>
+        </div>
+
+
+
+        <div class="w3-row w3-padding-64" style="background-color:#d4FFF0;">
+            <div id="theme">
+                <div class="w3-twothird w3-container">
+                    <div style="width:65%;float:left;">
+                        <table class="w3-table-all">
+                            <tr>
+                                <th>人體新陳代謝量(W/m^2)</th>
+                                <th></th>
+                                <th>衣著隔絕度(m^2*K/W)</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>平躺：</td>
+                                <td>46</td>
+                                <td>內襯褲 短袖襯衫 薄長褲 薄襪 鞋子：</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>靜坐：</td>
+                                <td>58</td>
+                                <td>短襯褲 襯裙 褲襪 短裙 鞋子：</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>坐著從事桌面活動：</td>
+                                <td>70</td>
+                                <td>短襯衫 T-shirt 薄襯衫 薄襪 涼鞋：</td>
+                                <td>0.3</td>
+                            </tr>
+                            <tr>
+                                <td>站著輕微活動：</td>
+                                <td>93</td>
+                                <td>內衣 厚襯衫 長褲 襪子 鞋子：</td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td>站著中度活動：</td>
+                                <td>116</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="width:34%;float:right;padding-left:1%;">
+                        <p>人體新陳代謝量(w/m2) m = <input v-model='m' style="width:15%"> </p>
+                        <p>外部影響人體之能量(w/m2) w = <input v-model='w' style="width:15%"> </p>
+                        <p> 平均輻射溫度(。C) tr = <input v-model='tr' style="width:15%"></p>
+                        <p> 濕度(%) rh = <input type=text v-model='rh' style="width:15%"></p>
+                        <p>衣著隔絕度(clo) icl = <input v-model='icl' style="width:15%"> </p>
+                        <p> 相對風速(m/s) v = <input v-model='v' style="width:15%"></p>
+                        <p>
+                            <button type="button" v-on:click="calculator1" style="float: right"
+                                class="w3-button w3-round w3-light-grey">計算</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container">
+                    <div>
+                        <p>最佳溫度(。C)：</p>
+                        <p>ta = {{ ta }}</p>
+                        <p>預測平均表決：</p>
+                        <p>pmv = {{ pmv_c }}</p>
+                        <p>預測不滿意百分率：</p>
+                        <p>ppd = {{ ppd_c }}</p>
+                    </div>
+                </div>
+            </div>
+            <script src="./contral/calculator_vue.js"></script>
+        </div>
+
+        <!-- Pagination
+        <div class="w3-center w3-padding-32">
+            <div class="w3-bar">
+                <a class="w3-button w3-black" href="#">1</a>
+                <a class="w3-button w3-hover-black" href="#">2</a>
+                <a class="w3-button w3-hover-black" href="#">3</a>
+                <a class="w3-button w3-hover-black" href="#">4</a>
+                <a class="w3-button w3-hover-black" href="#">5</a>
+                <a class="w3-button w3-hover-black" href="#">»</a>
+            </div>
+        </div> -->
+
+        <footer id="myFooter">
+            <div class="w3-container w3-theme-l2 w3-padding-32">
+                <h4></h4>
+            </div>
+
+            <div class="w3-container w3-theme-l1">
+                <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+            </div>
+        </footer>
+
+        <!-- END MAIN -->
+    </div>
+
+    <script>
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+                overlayBg.style.display = "none";
+            } else {
+                mySidebar.style.display = 'block';
+                overlayBg.style.display = "block";
+            }
+        }
+
+        // Close the sidebar with the close button
+        function w3_close() {
+            mySidebar.style.display = "none";
+            overlayBg.style.display = "none";
+        }
+    </script>
+
+
+</body>
+
+
+</html>

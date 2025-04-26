@@ -16,7 +16,7 @@
 
 ---
 
-## 🛠️ 技術堆疊
+## 🛠️ 技術
 
 - 前端框架：[Vue 3](https://vuejs.org/)
 - 數學模型：根據 **ASHRAE Standard 55** 標準內容。
